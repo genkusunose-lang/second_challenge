@@ -1,0 +1,20 @@
+<launch>
+    <arg name="target_dist" default="1.0"/>
+    <arg name="velocity" default="0.4"/>
+
+    <node pkg="second_challenge_Kusunose"
+          exec="second_challenge_Kusunose_node"
+          name="second_challenge_sample_node">
+        <param name="target_dist" value="$(var target_dist)"/>
+        <param name="velocity" value="$(var velocity)"/>
+    </node>
+
+    <node pkg="urg_node"
+          exec="urg_node_driver"
+          name="lidar_node">
+        <param name="ip_address" value="192.168.1.221"/>
+        <param name="laser_frame_id" value="laser"/>
+        <param name="angle_min" value="-2.356"/>
+        <param name="angle_max" value="2.356"/>
+    </node>
+</launch>
